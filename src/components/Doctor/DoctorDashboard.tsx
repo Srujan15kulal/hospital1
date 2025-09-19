@@ -14,6 +14,8 @@ export const DoctorDashboard: React.FC = () => {
   const [selectedPatient, setSelectedPatient] = useState<any>(null);
   const [activeTab, setActiveTab] = useState('overview');
   const [showActionModal, setShowActionModal] = useState<string | null>(null);
+  const [selectedTests, setSelectedTests] = useState<string[]>([]);
+  const [requestedTests, setRequestedTests] = useState<{patientId: string, tests: string[], timestamp: string}[]>([]);
 
   const filteredPatients = mockPatients.filter(patient => 
     patient.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
@@ -146,6 +148,32 @@ export const DoctorDashboard: React.FC = () => {
     const action = actions.find(a => a.id === showActionModal);
     if (!action) return null;
 
+    const handleTestSelection = (test: string) => {
+      setSelectedTests(prev => 
+        prev.includes(test) 
+          ? prev.filter(t => t !== test)
+          : [...prev, test]
+      );
+    };
+
+    const handleConfirmTests = () => {
+      if (selectedTests.length > 0 && selectedPatient) {
+        const newRequest = {
+          patientId: selectedPatient.patient_id,
+          tests: [...selectedTests],
+          timestamp: new Date().toLocaleString()
+        };
+        setRequestedTests(prev => [...prev, newRequest]);
+        alert(`Successfully requested ${selectedTests.join(', ')} for ${selectedPatient.name}`);
+        setSelectedTests([]);
+        setShowActionModal(null);
+      }
+    };
+
+    const handleCloseModal = () => {
+      setSelectedTests([]);
+      setShowActionModal(null);
+    };
     return (
       <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center p-4 z-50">
         <Card className="w-full max-w-md">
@@ -154,10 +182,44 @@ export const DoctorDashboard: React.FC = () => {
           {action.options ? (
             <div className="space-y-3">
               {action.options.map((option) => (
-                <Button key={option} variant="outline" fullWidth>
-                  {option}
-                </Button>
+                <button
+                  key={option}
+                  onClick={() => handleTestSelection(option)}
+                  className={`w-full px-4 py-2 text-left border transition-colors ${
+                    selectedTests.includes(option)
+                      ? 'bg-black text-white border-black'
+                      : 'bg-white text-black border-black hover:bg-gray-50'
+                  }`}
+                >
+                  <div className="flex items-center justify-between">
+                    <span>{option}</span>
+                    {selectedTests.includes(option) && (
+                      <span className="text-sm">✓</span>
+                    )}
+                  </div>
+                </button>
               ))}
+              
+              {selectedTests.length > 0 && (
+                <div className="mt-4 p-3 bg-gray-50 border">
+                  <p className="text-sm font-medium text-gray-700 mb-2">
+                    Selected Tests ({selectedTests.length}):
+                  </p>
+                  <p className="text-sm text-gray-600">
+                    {selectedTests.join(', ')}
+                  </p>
+                </div>
+              )}
+              
+              <div className="flex gap-2 mt-4">
+                <Button 
+                  fullWidth 
+                  onClick={handleConfirmTests}
+                  disabled={selectedTests.length === 0}
+                >
+                  Confirm Request ({selectedTests.length})
+                </Button>
+              </div>
             </div>
           ) : (
             <div className="space-y-4">
@@ -174,7 +236,7 @@ export const DoctorDashboard: React.FC = () => {
             variant="outline" 
             fullWidth 
             className="mt-3"
-            onClick={() => setShowActionModal(null)}
+            onClick={handleCloseModal}
           >
             Cancel
           </Button>
