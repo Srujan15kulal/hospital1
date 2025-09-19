@@ -14,6 +14,12 @@ import { PatientAllergies } from './components/Patient/PatientAllergies';
 import { PatientProfile } from './components/Patient/PatientProfile';
 import { HospitalDashboard } from './components/Hospital/HospitalDashboard';
 import { PatientRegistration } from './components/Hospital/PatientRegistration';
+import { StaffManagement } from './components/Hospital/StaffManagement';
+import { AddDoctor } from './components/Hospital/AddDoctor';
+import { AddStaff } from './components/Hospital/AddStaff';
+import { AppointmentManagement } from './components/Hospital/AppointmentManagement';
+import { BillingManagement } from './components/Hospital/BillingManagement';
+import { ViewAllBilling } from './components/Hospital/ViewAllBilling';
 import { PharmacyDashboard } from './components/Pharmacy/PharmacyDashboard';
 import { LabDashboard } from './components/Lab/LabDashboard';
 import { BillingPage } from './components/Billing/BillingPage';
@@ -124,6 +130,54 @@ const AppRoutes: React.FC = () => {
         element={
           <ProtectedRoute allowedRoles={['hospital']}>
             <PatientRegistration />
+          </ProtectedRoute>
+        } 
+      />
+      <Route 
+        path="/hospital/staff-management" 
+        element={
+          <ProtectedRoute allowedRoles={['hospital']}>
+            <StaffManagement />
+          </ProtectedRoute>
+        } 
+      />
+      <Route 
+        path="/hospital/add-doctor" 
+        element={
+          <ProtectedRoute allowedRoles={['hospital']}>
+            <AddDoctor />
+          </ProtectedRoute>
+        } 
+      />
+      <Route 
+        path="/hospital/add-staff" 
+        element={
+          <ProtectedRoute allowedRoles={['hospital']}>
+            <AddStaff />
+          </ProtectedRoute>
+        } 
+      />
+      <Route 
+        path="/hospital/appointments" 
+        element={
+          <ProtectedRoute allowedRoles={['hospital']}>
+            <AppointmentManagement />
+          </ProtectedRoute>
+        } 
+      />
+      <Route 
+        path="/hospital/billing" 
+        element={
+          <ProtectedRoute allowedRoles={['hospital']}>
+            <BillingManagement />
+          </ProtectedRoute>
+        } 
+      />
+      <Route 
+        path="/hospital/billing/view-all" 
+        element={
+          <ProtectedRoute allowedRoles={['hospital']}>
+            <ViewAllBilling />
           </ProtectedRoute>
         } 
       />

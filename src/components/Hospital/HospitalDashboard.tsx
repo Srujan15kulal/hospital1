@@ -28,7 +28,7 @@ export const HospitalDashboard: React.FC = () => {
             <Users size={32} className="text-blue-600 mx-auto mb-3" />
             <h3 className="font-semibold text-gray-900 mb-2">Manage Staff</h3>
             <p className="text-sm text-gray-600 mb-4">Doctors, Pharmacists, Lab Techs</p>
-            <Button fullWidth variant="outline">
+            <Button fullWidth variant="outline" onClick={() => navigate('/hospital/staff-management')}>
               Manage Staff
             </Button>
           </Card>
@@ -37,7 +37,7 @@ export const HospitalDashboard: React.FC = () => {
             <Calendar size={32} className="text-blue-600 mx-auto mb-3" />
             <h3 className="font-semibold text-gray-900 mb-2">Appointments</h3>
             <p className="text-sm text-gray-600 mb-4">Schedule by department</p>
-            <Button fullWidth variant="outline">
+            <Button fullWidth variant="outline" onClick={() => navigate('/hospital/appointments')}>
               View Schedules
             </Button>
           </Card>
@@ -46,7 +46,7 @@ export const HospitalDashboard: React.FC = () => {
             <CreditCard size={32} className="text-blue-600 mx-auto mb-3" />
             <h3 className="font-semibold text-gray-900 mb-2">Billing Management</h3>
             <p className="text-sm text-gray-600 mb-4">Invoices and payments</p>
-            <Button fullWidth variant="outline">
+            <Button fullWidth variant="outline" onClick={() => navigate('/hospital/billing')}>
               View Billing
             </Button>
           </Card>
