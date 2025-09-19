@@ -14,10 +14,10 @@ export const HospitalDashboard: React.FC = () => {
       
       <div className="max-w-6xl mx-auto p-6">
         {/* Quick Actions */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-6">
+        <div className="grid grid-cols-1 md:grid-cols-4 gap-6 mb-6">
           <Card className="text-center">
             <UserPlus size={32} className="text-blue-600 mx-auto mb-3" />
-            <h3 className="font-semibold text-gray-900 mb-2">Register Patient</h3>
+            <h3 className="font-semibold text-gray-900 mb-2">Patient Registration</h3>
             <p className="text-sm text-gray-600 mb-4">Register new patient and assign doctor</p>
             <Button fullWidth onClick={() => navigate('/registration')}>
               Register Patient
@@ -27,28 +27,37 @@ export const HospitalDashboard: React.FC = () => {
           <Card className="text-center">
             <Users size={32} className="text-blue-600 mx-auto mb-3" />
             <h3 className="font-semibold text-gray-900 mb-2">Manage Staff</h3>
-            <p className="text-sm text-gray-600 mb-4">Add or manage hospital staff</p>
+            <p className="text-sm text-gray-600 mb-4">Doctors, Pharmacists, Lab Techs</p>
             <Button fullWidth variant="outline">
               Manage Staff
             </Button>
           </Card>
 
           <Card className="text-center">
+            <Calendar size={32} className="text-blue-600 mx-auto mb-3" />
+            <h3 className="font-semibold text-gray-900 mb-2">Appointments</h3>
+            <p className="text-sm text-gray-600 mb-4">Schedule by department</p>
+            <Button fullWidth variant="outline">
+              View Schedules
+            </Button>
+          </Card>
+
+          <Card className="text-center">
             <CreditCard size={32} className="text-blue-600 mx-auto mb-3" />
-            <h3 className="font-semibold text-gray-900 mb-2">Billing</h3>
-            <p className="text-sm text-gray-600 mb-4">Manage patient billing</p>
+            <h3 className="font-semibold text-gray-900 mb-2">Billing Management</h3>
+            <p className="text-sm text-gray-600 mb-4">Invoices and payments</p>
             <Button fullWidth variant="outline">
               View Billing
             </Button>
           </Card>
         </div>
 
-        {/* Recent Activities */}
+        {/* Patient Registrations & Department Overview */}
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
           <Card>
             <div className="flex items-center gap-2 mb-4">
               <UserPlus size={20} className="text-blue-600" />
-              <h3 className="font-semibold text-gray-900">Recent Registrations</h3>
+              <h3 className="font-semibold text-gray-900">All Patient Registrations</h3>
             </div>
             
             <div className="space-y-3">
@@ -71,13 +80,23 @@ export const HospitalDashboard: React.FC = () => {
                   Active
                 </span>
               </div>
+              
+              <div className="flex justify-between items-center p-3 border rounded-lg">
+                <div>
+                  <h4 className="font-medium">Arjun P.</h4>
+                  <p className="text-sm text-gray-600">P-1003 • Registered at 10:30</p>
+                </div>
+                <span className="px-3 py-1 bg-green-100 text-green-800 text-sm rounded-full">
+                  Active
+                </span>
+              </div>
             </div>
           </Card>
 
           <Card>
             <div className="flex items-center gap-2 mb-4">
               <Calendar size={20} className="text-blue-600" />
-              <h3 className="font-semibold text-gray-900">Department Overview</h3>
+              <h3 className="font-semibold text-gray-900">Appointment Schedules by Department</h3>
             </div>
             
             <div className="space-y-3">

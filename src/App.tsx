@@ -3,8 +3,7 @@ import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-d
 import { AuthProvider, useAuth } from './context/AuthContext';
 
 // Components
-import { RoleSelector } from './components/Home/RoleSelector';
-import { LoginForm } from './components/Auth/LoginForm';
+import { UnifiedLoginForm } from './components/Auth/UnifiedLoginForm';
 import { DoctorDashboard } from './components/Doctor/DoctorDashboard';
 import { PatientDetail } from './components/Doctor/PatientDetail';
 import { PatientDashboard } from './components/Patient/PatientDashboard';
@@ -36,14 +35,7 @@ const AppRoutes: React.FC = () => {
   return (
     <Routes>
       {/* Home Route */}
-      <Route path="/" element={<RoleSelector />} />
-      
-      {/* Login Routes */}
-      <Route path="/login/doctor" element={<LoginForm role="doctor" />} />
-      <Route path="/login/patient" element={<LoginForm role="patient" />} />
-      <Route path="/login/hospital" element={<LoginForm role="hospital" />} />
-      <Route path="/login/pharmacist" element={<LoginForm role="pharmacist" />} />
-      <Route path="/login/lab" element={<LoginForm role="lab_technician" />} />
+      <Route path="/" element={<UnifiedLoginForm />} />
       
       {/* Doctor Routes */}
       <Route 

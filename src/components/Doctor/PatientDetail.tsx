@@ -21,11 +21,10 @@ export const PatientDetail: React.FC = () => {
   ];
 
   const actions = [
-    { id: 'order_lab', label: 'Request Lab Test', options: ['Blood Test', 'Urine Test', 'Biochemistry', 'Microbiology'] },
-    { id: 'order_radiology', label: 'Request Radiology', options: ['X-Ray', 'Ultrasound', 'CT Scan', 'MRI'] },
-    { id: 'refer_physiotherapy', label: 'Refer to Physiotherapy' },
-    { id: 'refer_psychiatry', label: 'Refer to Psychiatry' },
-    { id: 'prescribe_med', label: 'Create Prescription' }
+    { id: 'blood_test', label: 'Request Blood Test', options: ['CBC', 'Blood Sugar', 'Lipid Profile', 'Liver Function'] },
+    { id: 'radiology', label: 'Request Radiology', options: ['X-Ray', 'Ultrasound', 'CT Scan', 'MRI'] },
+    { id: 'physiotherapy', label: 'Request Physiotherapy' },
+    { id: 'psychiatry', label: 'Request Psychiatry' }
   ];
 
   const renderTabContent = () => {

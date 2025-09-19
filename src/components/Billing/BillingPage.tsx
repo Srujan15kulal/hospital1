@@ -37,9 +37,9 @@ export const BillingPage: React.FC = () => {
             </div>
           </div>
 
-          {/* Invoice Items */}
+          {/* Create Invoices */}
           <div className="mb-6">
-            <h3 className="font-semibold text-gray-900 mb-4">Bill Items</h3>
+            <h3 className="font-semibold text-gray-900 mb-4">Invoice Items</h3>
             <div className="overflow-x-auto">
               <table className="w-full">
                 <thead>
@@ -64,10 +64,10 @@ export const BillingPage: React.FC = () => {
             </div>
           </div>
 
-          {/* Payment Methods */}
+          {/* View Payment Status */}
           {invoice.payment_status !== 'Paid' && (
             <div className="mb-6">
-              <h3 className="font-semibold text-gray-900 mb-4">Payment Methods</h3>
+              <h3 className="font-semibold text-gray-900 mb-4">Payment Status & Methods</h3>
               <div className="grid grid-cols-2 md:grid-cols-4 gap-3">
                 {paymentMethods.map((method) => (
                   <Button key={method} variant="outline" className="justify-center">

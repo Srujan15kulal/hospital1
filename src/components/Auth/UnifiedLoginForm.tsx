@@ -4,87 +4,84 @@ import { useAuth } from '../../context/AuthContext';
 import { Button } from '../Common/Button';
 import { FormField } from '../Common/FormField';
 import { Card } from '../Common/Card';
+import { Building2 } from 'lucide-react';
 
-interface LoginFormProps {
-  role: 'doctor' | 'patient' | 'hospital' | 'pharmacist' | 'lab_technician';
-}
-
-export const LoginForm: React.FC<LoginFormProps> = ({ role }) => {
+export const UnifiedLoginForm: React.FC = () => {
   const [credentials, setCredentials] = useState({
     username: '',
-    password: ''
+    password: '',
+    role: ''
   });
   const { login } = useAuth();
   const navigate = useNavigate();
 
+  const roleOptions = [
+    'Doctor',
+    'Patient', 
+    'Hospital/Reception',
+    'Pharmacist',
+    'Lab Technician'
+  ];
+
   const roleConfig = {
-    doctor: {
-      title: 'Doctor Login',
-      usernameLabel: 'Doctor ID / Email',
-      usernamePlaceholder: 'dr.anita@hospital.com',
+    'Doctor': {
       dashboardPath: '/doctor/dashboard',
       userData: { id: 'D-501', role: 'doctor' as const, name: 'Dr. Anita Sharma' }
     },
-    patient: {
-      title: 'Patient Login',
-      usernameLabel: 'Phone Number',
-      usernamePlaceholder: '+91 9876543210',
+    'Patient': {
       dashboardPath: '/patient/dashboard',
       userData: { id: 'P-1001', role: 'patient' as const, name: 'Ravi Kumar' }
     },
-    hospital: {
-      title: 'Hospital Staff Login',
-      usernameLabel: 'Staff ID',
-      usernamePlaceholder: 'H-001',
+    'Hospital/Reception': {
       dashboardPath: '/hospital/dashboard',
       userData: { id: 'H-001', role: 'hospital' as const, name: 'Reception Staff' }
     },
-    pharmacist: {
-      title: 'Pharmacist Login',
-      usernameLabel: 'Employee ID',
-      usernamePlaceholder: 'PH-001',
+    'Pharmacist': {
       dashboardPath: '/pharmacy/dashboard',
       userData: { id: 'PH-001', role: 'pharmacist' as const, name: 'Pharmacy Staff' }
     },
-    lab_technician: {
-      title: 'Lab Technician Login',
-      usernameLabel: 'Employee ID',
-      usernamePlaceholder: 'LAB-001',
+    'Lab Technician': {
       dashboardPath: '/lab/dashboard',
       userData: { id: 'LAB-001', role: 'lab_technician' as const, name: 'Lab Technician' }
     }
   };
 
-  const config = roleConfig[role];
-
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    // Simulate login - in real app, this would validate credentials
+    if (!credentials.role) {
+      alert('Please select a role');
+      return;
+    }
+    
+    const config = roleConfig[credentials.role as keyof typeof roleConfig];
     login(config.userData);
     navigate(config.dashboardPath);
   };
 
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
     setCredentials({
       ...credentials,
-      [e.target.name || 'username']: e.target.value
+      [e.target.name]: e.target.value
     });
   };
 
   return (
     <div className="min-h-screen bg-gray-50 flex items-center justify-center p-4">
       <Card className="w-full max-w-md">
-        <div className="text-center mb-6">
-          <h1 className="text-2xl font-bold text-gray-900 mb-2">{config.title}</h1>
-          <p className="text-gray-600">Health Portal Management System</p>
+        <div className="text-center mb-8">
+          <div className="w-16 h-16 bg-blue-50 rounded-full flex items-center justify-center mx-auto mb-4">
+            <Building2 size={32} className="text-blue-600" />
+          </div>
+          <h1 className="text-2xl font-semibold text-gray-900 mb-2">Health Portal</h1>
+          <p className="text-gray-600">Hospital Management System</p>
         </div>
 
-        <form onSubmit={handleSubmit}>
+        <form onSubmit={handleSubmit} className="space-y-4">
           <FormField
-            label={config.usernameLabel}
+            label="Username"
             name="username"
             type="text"
-            placeholder={config.usernamePlaceholder}
+            placeholder="Enter your username"
             value={credentials.username}
             onChange={handleChange}
             required
@@ -100,19 +97,19 @@ export const LoginForm: React.FC<LoginFormProps> = ({ role }) => {
             required
           />
 
-          <Button type="submit" fullWidth className="mb-4">
-            Sign In
-          </Button>
+          <FormField
+            label="Select Role"
+            name="role"
+            type="select"
+            value={credentials.role}
+            onChange={handleChange}
+            options={roleOptions}
+            required
+          />
 
-          <div className="text-center">
-            <Button
-              type="button"
-              variant="outline"
-              onClick={() => navigate('/')}
-            >
-              Back to Home
-            </Button>
-          </div>
+          <Button type="submit" fullWidth className="mt-6">
+            Login
+          </Button>
         </form>
       </Card>
     </div>

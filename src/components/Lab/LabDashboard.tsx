@@ -12,29 +12,23 @@ export const LabDashboard: React.FC = () => {
       
       <div className="max-w-6xl mx-auto p-6">
         {/* Stats Cards */}
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-4 mb-6">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-6">
           <Card className="text-center" padding="sm">
             <TestTube size={24} className="text-blue-600 mx-auto mb-2" />
             <h3 className="text-xl font-bold text-gray-900">8</h3>
-            <p className="text-sm text-gray-600">Pending Tests</p>
-          </Card>
-
-          <Card className="text-center" padding="sm">
-            <Clock size={24} className="text-orange-600 mx-auto mb-2" />
-            <h3 className="text-xl font-bold text-gray-900">5</h3>
-            <p className="text-sm text-gray-600">In Progress</p>
+            <p className="text-sm text-gray-600">Test Requests</p>
           </Card>
 
           <Card className="text-center" padding="sm">
             <Upload size={24} className="text-green-600 mx-auto mb-2" />
             <h3 className="text-xl font-bold text-gray-900">12</h3>
-            <p className="text-sm text-gray-600">Completed</p>
+            <p className="text-sm text-gray-600">Upload Results</p>
           </Card>
 
           <Card className="text-center" padding="sm">
             <FileText size={24} className="text-purple-600 mx-auto mb-2" />
             <h3 className="text-xl font-bold text-gray-900">25</h3>
-            <p className="text-sm text-gray-600">Total Reports</p>
+            <p className="text-sm text-gray-600">Patient Reports</p>
           </Card>
         </div>
 
@@ -43,7 +37,7 @@ export const LabDashboard: React.FC = () => {
           <div className="flex items-center justify-between mb-6">
             <div className="flex items-center gap-2">
               <TestTube size={20} className="text-blue-600" />
-              <h3 className="text-lg font-semibold text-gray-900">Test Requests</h3>
+              <h3 className="text-lg font-semibold text-gray-900">Test Requests Panel</h3>
             </div>
             <Button variant="outline" size="sm">View All</Button>
           </div>
@@ -86,10 +80,47 @@ export const LabDashboard: React.FC = () => {
                 </div>
               </div>
             ))}
+            
+            {/* Additional dummy test requests */}
+            <div className="border border-gray-200 rounded-lg p-4">
+              <div className="flex justify-between items-start mb-3">
+                <div>
+                  <h4 className="font-medium text-gray-900">LR-4002 - Lipid Profile</h4>
+                  <p className="text-sm text-gray-600">Patient: Meena R.</p>
+                  <p className="text-sm text-gray-600">Date: 2025-09-16</p>
+                </div>
+                <span className="px-3 py-1 text-sm rounded-full bg-orange-100 text-orange-800">
+                  In Progress
+                </span>
+              </div>
+              
+              <div className="flex gap-2">
+                <Button size="sm">Upload Results</Button>
+                <Button size="sm" variant="outline">View Details</Button>
+              </div>
+            </div>
+            
+            <div className="border border-gray-200 rounded-lg p-4">
+              <div className="flex justify-between items-start mb-3">
+                <div>
+                  <h4 className="font-medium text-gray-900">LR-4003 - Blood Sugar</h4>
+                  <p className="text-sm text-gray-600">Patient: Arjun P.</p>
+                  <p className="text-sm text-gray-600">Date: 2025-09-17</p>
+                </div>
+                <span className="px-3 py-1 text-sm rounded-full bg-blue-100 text-blue-800">
+                  Requested
+                </span>
+              </div>
+              
+              <div className="flex gap-2">
+                <Button size="sm">Collect Sample</Button>
+                <Button size="sm" variant="outline">View Details</Button>
+              </div>
+            </div>
           </div>
         </Card>
 
-        {/* Upload Results & Report History */}
+        {/* Upload Test Results & Patient Report History */}
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
           <Card>
             <div className="flex items-center gap-2 mb-4">
@@ -113,7 +144,7 @@ export const LabDashboard: React.FC = () => {
           <Card>
             <div className="flex items-center gap-2 mb-4">
               <FileText size={20} className="text-blue-600" />
-              <h3 className="font-semibold text-gray-900">Recent Reports</h3>
+              <h3 className="font-semibold text-gray-900">Patient Report History</h3>
             </div>
             
             <div className="space-y-3">
@@ -137,6 +168,14 @@ export const LabDashboard: React.FC = () => {
                 <div>
                   <h4 className="font-medium">Blood Sugar - Arjun P.</h4>
                   <p className="text-sm text-gray-600">Completed August 25, 2025</p>
+                </div>
+                <Button size="sm" variant="outline">View</Button>
+              </div>
+              
+              <div className="flex justify-between items-center p-3 border rounded-lg bg-green-50">
+                <div>
+                  <h4 className="font-medium">Urine Test - Priya S.</h4>
+                  <p className="text-sm text-gray-600">Completed August 22, 2025</p>
                 </div>
                 <Button size="sm" variant="outline">View</Button>
               </div>

@@ -12,23 +12,29 @@ export const PharmacyDashboard: React.FC = () => {
       
       <div className="max-w-6xl mx-auto p-6">
         {/* Stats Cards */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-6">
+        <div className="grid grid-cols-1 md:grid-cols-4 gap-6 mb-6">
           <Card className="text-center">
             <Pill size={32} className="text-blue-600 mx-auto mb-3" />
             <h3 className="text-2xl font-bold text-gray-900">12</h3>
-            <p className="text-gray-600">Pending Prescriptions</p>
+            <p className="text-gray-600">Prescription List</p>
           </Card>
 
           <Card className="text-center">
             <Package size={32} className="text-green-600 mx-auto mb-3" />
             <h3 className="text-2xl font-bold text-gray-900">145</h3>
-            <p className="text-gray-600">Medicines in Stock</p>
+            <p className="text-gray-600">Stock/Inventory</p>
+          </Card>
+
+          <Card className="text-center">
+            <CheckCircle size={32} className="text-purple-600 mx-auto mb-3" />
+            <h3 className="text-2xl font-bold text-gray-900">8</h3>
+            <p className="text-gray-600">Fulfilled Today</p>
           </Card>
 
           <Card className="text-center">
             <AlertTriangle size={32} className="text-orange-600 mx-auto mb-3" />
-            <h3 className="text-2xl font-bold text-gray-900">3</h3>
-            <p className="text-gray-600">Low Stock Items</p>
+            <h3 className="text-2xl font-bold text-gray-900">25</h3>
+            <p className="text-gray-600">Dispense Details</p>
           </Card>
         </div>
 
@@ -74,11 +80,43 @@ export const PharmacyDashboard: React.FC = () => {
                 </div>
                 
                 <div className="flex gap-2">
-                  <Button size="sm">Mark as Dispensed</Button>
-                  <Button size="sm" variant="outline">Print Label</Button>
+                  <Button size="sm">Mark as Fulfilled</Button>
+                  <Button size="sm" variant="outline">Upload Dispense Details</Button>
                 </div>
               </div>
             ))}
+            
+            {/* Additional dummy prescriptions */}
+            <div className="border border-gray-200 rounded-lg p-4">
+              <div className="flex justify-between items-start mb-3">
+                <div>
+                  <h4 className="font-medium text-gray-900">RX-2003 - Arjun P.</h4>
+                  <p className="text-sm text-gray-600">Date: 2025-09-12</p>
+                </div>
+                <span className="px-3 py-1 text-sm rounded-full bg-yellow-100 text-yellow-800">
+                  Pending
+                </span>
+              </div>
+              
+              <div className="mb-4">
+                <h5 className="font-medium text-gray-700 mb-2">Medicines:</h5>
+                <ul className="space-y-1">
+                  <li className="text-sm text-gray-600 flex items-center gap-2">
+                    <span className="w-2 h-2 bg-blue-500 rounded-full"></span>
+                    Amoxicillin 500mg - 1 cap 8hr
+                  </li>
+                  <li className="text-sm text-gray-600 flex items-center gap-2">
+                    <span className="w-2 h-2 bg-blue-500 rounded-full"></span>
+                    Cough Syrup - 5ml twice daily
+                  </li>
+                </ul>
+              </div>
+              
+              <div className="flex gap-2">
+                <Button size="sm">Mark as Fulfilled</Button>
+                <Button size="sm" variant="outline">Upload Dispense Details</Button>
+              </div>
+            </div>
           </div>
         </Card>
 
