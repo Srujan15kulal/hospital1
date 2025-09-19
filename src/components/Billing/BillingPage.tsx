@@ -13,7 +13,7 @@ export const BillingPage: React.FC = () => {
   const paymentMethods = ['Cash', 'Card', 'UPI', 'Insurance'];
 
   return (
-    <div className="min-h-screen bg-gray-50">
+    <div className="min-h-screen bg-white">
       <Header title={`Invoice ${invoice.invoice_id}`} showBackButton />
       
       <div className="max-w-4xl mx-auto p-6">
@@ -21,7 +21,7 @@ export const BillingPage: React.FC = () => {
           <div className="mb-6 pb-6 border-b">
             <div className="flex justify-between items-start">
               <div>
-                <h2 className="text-2xl font-bold text-gray-900">Invoice {invoice.invoice_id}</h2>
+                <h2 className="text-2xl font-bold text-black">Invoice {invoice.invoice_id}</h2>
                 <p className="text-gray-600">Patient: {invoice.patient_name}</p>
                 <p className="text-sm text-gray-500">Due Date: {invoice.due_date}</p>
               </div>

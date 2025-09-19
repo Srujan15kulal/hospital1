@@ -2,11 +2,11 @@ import { Doctor, Patient, Appointment, Invoice, Prescription, TestRequest } from
 
 export const mockDoctors: Doctor[] = [
   {
-    doctor_id: 'D-501',
-    name: 'Dr. Anita Sharma',
-    qualification: 'MBBS, MD (Dermatology)',
+    doctor_id: 'D-501', 
+    name: 'Dr. Ramesh',
+    qualification: 'MD, Dermatology',
     department: 'Dermatology',
-    contact_number: '+91 9876501234',
+    contact_number: '9999999999',
     photo_url: 'https://images.pexels.com/photos/5327921/pexels-photo-5327921.jpeg?auto=compress&cs=tinysrgb&w=80&h=80&fit=crop'
   },
   {

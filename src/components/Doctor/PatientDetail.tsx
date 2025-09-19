@@ -151,7 +151,7 @@ export const PatientDetail: React.FC = () => {
   };
 
   return (
-    <div className="min-h-screen bg-gray-50">
+    <div className="min-h-screen bg-white">
       <Header title={`Patient: ${patient.name}`} showBackButton />
       
       <div className="max-w-6xl mx-auto p-6">
@@ -159,19 +159,19 @@ export const PatientDetail: React.FC = () => {
           {/* Patient Info and Tabs */}
           <div className="lg:col-span-2">
             <Card>
-              <div className="flex items-center gap-4 mb-6 pb-6 border-b">
-                <div className="w-16 h-16 bg-gray-200 rounded-full flex items-center justify-center">
-                  <User size={32} className="text-gray-600" />
+              <div className="flex items-center gap-4 mb-6 pb-6 border-b border-black">
+                <div className="w-16 h-16 border border-black flex items-center justify-center">
+                  <User size={32} className="text-black" />
                 </div>
                 <div>
-                  <h2 className="text-xl font-semibold text-gray-900">{patient.name}</h2>
+                  <h2 className="text-xl font-semibold text-black">{patient.name}</h2>
                   <p className="text-gray-600">{patient.age} years • {patient.gender}</p>
-                  <p className="text-sm text-blue-600">{patient.patient_id}</p>
+                  <p className="text-sm text-black">{patient.patient_id}</p>
                 </div>
               </div>
 
               {/* Tabs */}
-              <div className="flex border-b mb-6">
+              <div className="flex border-b border-black mb-6">
                 {tabs.map((tab) => {
                   const IconComponent = tab.icon;
                   return (
@@ -180,8 +180,8 @@ export const PatientDetail: React.FC = () => {
                       onClick={() => setActiveTab(tab.id)}
                       className={`flex items-center gap-2 px-4 py-2 border-b-2 transition-colors ${
                         activeTab === tab.id
-                          ? 'border-blue-600 text-blue-600'
-                          : 'border-transparent text-gray-600 hover:text-gray-900'
+                          ? 'border-black text-black'
+                          : 'border-transparent text-gray-600 hover:text-black'
                       }`}
                     >
                       <IconComponent size={16} />

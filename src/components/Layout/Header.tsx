@@ -38,7 +38,7 @@ export const Header: React.FC<HeaderProps> = ({ title, showBackButton = false })
     const roleMap: { [key: string]: string } = {
       doctor: 'Doctor',
       patient: 'Patient',
-      hospital: 'Hospital Staff',
+      hospital: 'Receptionist',
       pharmacist: 'Pharmacist',
       lab_technician: 'Lab Technician'
     };
@@ -46,21 +46,21 @@ export const Header: React.FC<HeaderProps> = ({ title, showBackButton = false })
   };
 
   return (
-    <header className="bg-white border-b border-gray-100 px-4 py-4">
+    <header className="bg-white border-b border-black px-4 py-4">
       <div className="flex items-center justify-between max-w-6xl mx-auto">
         <div className="flex items-center gap-4">
           {showBackButton && (
             <button
               onClick={handleBack}
-              className="p-2 hover:bg-gray-50 rounded-lg transition-colors"
+              className="p-2 hover:bg-gray-100 transition-colors border border-black"
             >
-              <ArrowLeft size={20} className="text-gray-700" />
+              <ArrowLeft size={20} className="text-black" />
             </button>
           )}
           <div>
-            <h1 className="text-xl font-medium text-gray-900">{title}</h1>
+            <h1 className="text-xl font-medium text-black">{title}</h1>
             {user && (
-              <p className="text-sm text-gray-500">
+              <p className="text-sm text-gray-600">
                 {getRoleDisplayName(user.role)} Portal
               </p>
             )}
@@ -70,13 +70,13 @@ export const Header: React.FC<HeaderProps> = ({ title, showBackButton = false })
         <div className="flex items-center gap-4">
           {user && (
             <div className="flex items-center gap-3">
-              <div className="flex items-center gap-2 px-3 py-2 bg-gray-50 rounded-full">
-                <User size={16} className="text-gray-600" />
-                <span className="text-sm text-gray-700">{user.name}</span>
+              <div className="flex items-center gap-2 px-3 py-2 border border-black">
+                <User size={16} className="text-black" />
+                <span className="text-sm text-black">{user.name}</span>
               </div>
               <button
                 onClick={handleLogout}
-                className="p-2 text-gray-500 hover:text-red-600 hover:bg-red-50 rounded-lg transition-colors"
+                className="p-2 text-black hover:bg-gray-100 border border-black transition-colors"
               >
                 <LogOut size={18} />
               </button>

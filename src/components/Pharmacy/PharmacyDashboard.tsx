@@ -7,15 +7,15 @@ import { mockPrescriptions } from '../../data/mockData';
 
 export const PharmacyDashboard: React.FC = () => {
   return (
-    <div className="min-h-screen bg-gray-50">
+    <div className="min-h-screen bg-white">
       <Header title="Pharmacy Dashboard" />
       
       <div className="max-w-6xl mx-auto p-6">
         {/* Stats Cards */}
         <div className="grid grid-cols-1 md:grid-cols-4 gap-6 mb-6">
           <Card className="text-center">
-            <Pill size={32} className="text-blue-600 mx-auto mb-3" />
-            <h3 className="text-2xl font-bold text-gray-900">12</h3>
+            <Pill size={32} className="text-black mx-auto mb-3" />
+            <h3 className="text-2xl font-bold text-black">12</h3>
             <p className="text-gray-600">Prescription List</p>
           </Card>
 

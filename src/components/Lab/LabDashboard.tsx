@@ -7,15 +7,15 @@ import { mockTestRequests } from '../../data/mockData';
 
 export const LabDashboard: React.FC = () => {
   return (
-    <div className="min-h-screen bg-gray-50">
+    <div className="min-h-screen bg-white">
       <Header title="Lab Dashboard" />
       
       <div className="max-w-6xl mx-auto p-6">
         {/* Stats Cards */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-6">
           <Card className="text-center" padding="sm">
-            <TestTube size={24} className="text-blue-600 mx-auto mb-2" />
-            <h3 className="text-xl font-bold text-gray-900">8</h3>
+            <TestTube size={24} className="text-black mx-auto mb-2" />
+            <h3 className="text-xl font-bold text-black">8</h3>
             <p className="text-sm text-gray-600">Test Requests</p>
           </Card>
 

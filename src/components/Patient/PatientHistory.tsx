@@ -68,24 +68,24 @@ export const PatientHistory: React.FC = () => {
   ];
 
   return (
-    <div className="min-h-screen bg-gray-50">
-      <Header title="Medical History" showBackButton />
+    <div className="min-h-screen bg-white">
+      <Header title="Prescription History" showBackButton />
       
       <div className="max-w-4xl mx-auto p-6">
         <Card>
           <div className="flex items-center gap-2 mb-6">
-            <Pill size={20} className="text-gray-700" />
-            <h2 className="text-lg font-medium text-gray-900">Last 10 Prescriptions</h2>
+            <Pill size={20} className="text-black" />
+            <h2 className="text-lg font-medium text-black">Last 10 Prescriptions</h2>
           </div>
           
           <div className="space-y-3">
             {prescriptions.map((prescription, index) => (
-              <div key={index} className="p-4 border border-gray-100 rounded-lg hover:bg-gray-50 transition-colors">
+              <div key={index} className="p-4 border border-black hover:bg-gray-50 transition-colors">
                 <div className="flex items-start justify-between">
                   <div className="flex-1">
                     <div className="flex items-center gap-2 mb-2">
-                      <Pill size={16} className="text-gray-600" />
-                      <h3 className="font-medium text-gray-900">{prescription.medicine}</h3>
+                      <Pill size={16} className="text-black" />
+                      <h3 className="font-medium text-black">{prescription.medicine}</h3>
                     </div>
                     <p className="text-sm text-gray-600 mb-1">Quantity: {prescription.quantity}</p>
                     <div className="flex items-center gap-4 text-sm text-gray-500">

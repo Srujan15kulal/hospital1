@@ -42,12 +42,12 @@ export const PatientRegistration: React.FC = () => {
   ];
 
   return (
-    <div className="min-h-screen bg-gray-50">
+    <div className="min-h-screen bg-white">
       <Header title="Patient Registration" showBackButton />
       
       <div className="max-w-2xl mx-auto p-6">
         <Card>
-          <h2 className="text-lg font-semibold text-gray-900 mb-6">Register New Patient</h2>
+          <h2 className="text-lg font-semibold text-black mb-6">Register New Patient</h2>
           
           <form onSubmit={handleSubmit}>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">

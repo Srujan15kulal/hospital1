@@ -12,21 +12,21 @@ export const PatientDashboard: React.FC = () => {
   const assignedDoctor = mockDoctors[0]; // Assigned doctor
 
   return (
-    <div className="min-h-screen bg-gray-50">
+    <div className="min-h-screen bg-white">
       <Header title="Patient Dashboard" />
       
       <div className="max-w-6xl mx-auto p-6">
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
           {/* Patient Profile */}
           <Card>
-            <div className="flex items-center gap-2 mb-4">
-              <User size={20} className="text-blue-600" />
-              <h3 className="font-semibold text-gray-900">Profile</h3>
+            <div className="flex items-center gap-2 mb-4"> 
+              <User size={20} className="text-black" />
+              <h3 className="font-semibold text-black">Profile</h3>
             </div>
             <div className="space-y-3">
               <div>
-                <label className="text-xs font-medium text-gray-500">Name</label>
-                <p className="text-gray-900">{patient.name}</p>
+                <label className="text-xs font-medium text-black">Name</label>
+                <p className="text-black">{patient.name}</p>
               </div>
               <div>
                 <label className="text-xs font-medium text-gray-500">Age</label>

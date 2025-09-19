@@ -18,7 +18,7 @@ export const UnifiedLoginForm: React.FC = () => {
   const roleOptions = [
     'Doctor',
     'Patient', 
-    'Hospital/Reception',
+    'Receptionist',
     'Pharmacist',
     'Lab Technician'
   ];
@@ -26,13 +26,13 @@ export const UnifiedLoginForm: React.FC = () => {
   const roleConfig = {
     'Doctor': {
       dashboardPath: '/doctor/dashboard',
-      userData: { id: 'D-501', role: 'doctor' as const, name: 'Dr. Anita Sharma' }
+      userData: { id: 'D-501', role: 'doctor' as const, name: 'Dr. Ramesh' }
     },
     'Patient': {
       dashboardPath: '/patient/dashboard',
       userData: { id: 'P-1001', role: 'patient' as const, name: 'Ravi Kumar' }
     },
-    'Hospital/Reception': {
+    'Receptionist': {
       dashboardPath: '/hospital/dashboard',
       userData: { id: 'H-001', role: 'hospital' as const, name: 'Reception Staff' }
     },
@@ -69,11 +69,11 @@ export const UnifiedLoginForm: React.FC = () => {
     <div className="min-h-screen bg-white flex items-center justify-center p-4">
       <Card className="w-full max-w-md">
         <div className="text-center mb-8">
-          <div className="w-16 h-16 bg-gray-100 rounded-full flex items-center justify-center mx-auto mb-4">
-            <Building2 size={32} className="text-gray-700" />
+          <div className="w-16 h-16 border border-black flex items-center justify-center mx-auto mb-4">
+            <Building2 size={32} className="text-black" />
           </div>
-          <h1 className="text-2xl font-medium text-gray-900 mb-2">Health Portal</h1>
-          <p className="text-gray-600">Hospital Management System</p>
+          <h1 className="text-2xl font-medium text-black mb-2">Hospital Management System</h1>
+          <p className="text-gray-600">Select your role and login</p>
         </div>
 
         <form onSubmit={handleSubmit} className="space-y-4">

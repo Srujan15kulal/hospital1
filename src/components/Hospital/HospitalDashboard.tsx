@@ -9,15 +9,15 @@ export const HospitalDashboard: React.FC = () => {
   const navigate = useNavigate();
 
   return (
-    <div className="min-h-screen bg-gray-50">
+    <div className="min-h-screen bg-white">
       <Header title="Hospital Dashboard" />
       
       <div className="max-w-6xl mx-auto p-6">
         {/* Quick Actions */}
         <div className="grid grid-cols-1 md:grid-cols-4 gap-6 mb-6">
           <Card className="text-center">
-            <UserPlus size={32} className="text-blue-600 mx-auto mb-3" />
-            <h3 className="font-semibold text-gray-900 mb-2">Patient Registration</h3>
+            <UserPlus size={32} className="text-black mx-auto mb-3" />
+            <h3 className="font-semibold text-black mb-2">Patient Registration</h3>
             <p className="text-sm text-gray-600 mb-4">Register new patient and assign doctor</p>
             <Button fullWidth onClick={() => navigate('/registration')}>
               Register Patient

@@ -17,15 +17,15 @@ export const Button: React.FC<ButtonProps> = ({
   className = '',
   ...props
 }) => {
-  const baseClasses = 'font-medium rounded-lg transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-offset-2 disabled:opacity-50 disabled:cursor-not-allowed';
+  const baseClasses = 'font-medium rounded-none transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-offset-2 disabled:opacity-50 disabled:cursor-not-allowed border';
   
   const variantClasses = {
-    primary: 'bg-gray-900 hover:bg-gray-800 text-white focus:ring-gray-500',
-    secondary: 'bg-gray-100 hover:bg-gray-200 text-gray-800 focus:ring-gray-400',
-    outline: 'border border-gray-300 bg-white hover:bg-gray-50 text-gray-800 focus:ring-gray-400',
-    danger: 'bg-red-600 hover:bg-red-700 text-white focus:ring-red-500',
-    confirm: 'bg-black hover:bg-gray-900 text-white focus:ring-gray-500 transform hover:scale-105 active:scale-95',
-    cancel: 'bg-black hover:bg-gray-900 text-white focus:ring-gray-500'
+    primary: 'bg-black hover:bg-gray-800 text-white border-black focus:ring-gray-500',
+    secondary: 'bg-white hover:bg-gray-50 text-black border-black focus:ring-gray-400',
+    outline: 'border border-black bg-white hover:bg-black hover:text-white text-black focus:ring-gray-400',
+    danger: 'bg-black hover:bg-gray-800 text-white border-black focus:ring-gray-500',
+    confirm: 'bg-black hover:bg-gray-800 text-white border-black focus:ring-gray-500 transform hover:scale-105 active:scale-95 transition-transform',
+    cancel: 'bg-black hover:bg-gray-800 text-white border-black focus:ring-gray-500'
   };
 
   const sizeClasses = {
