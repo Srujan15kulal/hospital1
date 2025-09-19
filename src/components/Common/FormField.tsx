@@ -24,6 +24,7 @@ export const FormField: React.FC<FormFieldProps> = ({
   className = ''
 }) => {
   const baseInputClasses = 'w-full px-3 py-2 bg-white focus:outline-none focus:ring-2 focus:ring-gray-500';
+  const inputWithBorder = `${baseInputClasses} border border-gray-300`;
 
   return (
     <div className={`mb-4 ${className}`}>
@@ -36,7 +37,7 @@ export const FormField: React.FC<FormFieldProps> = ({
           name={name}
           value={value}
           onChange={onChange}
-          className={baseInputClasses}
+          className={inputWithBorder}
           required={required}
         >
           <option value="">Select {label}</option>
@@ -52,7 +53,7 @@ export const FormField: React.FC<FormFieldProps> = ({
           placeholder={placeholder}
           value={value}
           onChange={onChange}
-          className={`${baseInputClasses} min-h-[100px] resize-vertical`}
+          className={`${inputWithBorder} min-h-[100px] resize-vertical`}
           required={required}
         />
       ) : (
@@ -62,7 +63,7 @@ export const FormField: React.FC<FormFieldProps> = ({
           placeholder={placeholder}
           value={value}
           onChange={onChange}
-          className={baseInputClasses}
+          className={inputWithBorder}
           required={required}
         />
       )}

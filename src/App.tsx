@@ -11,6 +11,7 @@ import { PatientDashboard } from './components/Patient/PatientDashboard';
 import { PatientHistory } from './components/Patient/PatientHistory';
 import { PatientReports } from './components/Patient/PatientReports';
 import { PatientAllergies } from './components/Patient/PatientAllergies';
+import { PatientProfile } from './components/Patient/PatientProfile';
 import { HospitalDashboard } from './components/Hospital/HospitalDashboard';
 import { PatientRegistration } from './components/Hospital/PatientRegistration';
 import { PharmacyDashboard } from './components/Pharmacy/PharmacyDashboard';
@@ -97,6 +98,14 @@ const AppRoutes: React.FC = () => {
         element={
           <ProtectedRoute allowedRoles={['patient']}>
             <PatientAllergies />
+          </ProtectedRoute>
+        } 
+      />
+      <Route 
+        path="/patient/profile" 
+        element={
+          <ProtectedRoute allowedRoles={['patient']}>
+            <PatientProfile />
           </ProtectedRoute>
         } 
       />

@@ -44,6 +44,9 @@ export const PatientDashboard: React.FC = () => {
                 <label className="text-xs font-medium text-gray-500">Aadhar</label>
                 <p className="text-gray-900">{patient.aadhar_number}</p>
               </div>
+              <Button variant="outline" size="sm" className="mt-3" onClick={() => navigate('/patient/profile')}>
+                Edit Profile
+              </Button>
             </div>
           </Card>
 

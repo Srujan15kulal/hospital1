@@ -19,7 +19,7 @@ export const Card: React.FC<CardProps> = ({
   };
 
   return (
-    <div className={`bg-white ${paddingClasses[padding]} ${className}`}>
+    <div className={`bg-white border border-gray-300 ${paddingClasses[padding]} ${className}`}>
       {children}
     </div>
   );
