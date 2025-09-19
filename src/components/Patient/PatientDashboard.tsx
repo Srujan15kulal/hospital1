@@ -3,7 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import { Header } from '../Layout/Header';
 import { Card } from '../Common/Card';
 import { Button } from '../Common/Button';
-import { User, Calendar, FileText, CreditCard, TestTube, Pill } from 'lucide-react';
+import { User, Calendar, FileText, CreditCard, TestTube, Pill, AlertTriangle } from 'lucide-react';
 import { mockPatients, mockDoctors } from '../../data/mockData';
 
 export const PatientDashboard: React.FC = () => {
