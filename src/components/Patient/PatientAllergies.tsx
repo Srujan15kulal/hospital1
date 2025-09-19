@@ -2,41 +2,23 @@ import React from 'react';
 import { Header } from '../Layout/Header';
 import { Card } from '../Common/Card';
 import { AlertTriangle } from 'lucide-react';
+import { getPatientAllergies } from '../../data/patientData';
+import { useAuth } from '../../context/AuthContext';
 
 export const PatientAllergies: React.FC = () => {
-  const allergies = [
-    {
-      name: 'Peanuts',
-      severity: 'High',
-      description: 'Severe allergic reaction to peanuts and peanut products'
-    },
-    {
-      name: 'Penicillin',
-      severity: 'High',
-      description: 'Severe allergic reaction to penicillin-based antibiotics'
-    },
-    {
-      name: 'Dust',
-      severity: 'Medium',
-      description: 'Allergic reaction to dust mites and particles'
-    },
-    {
-      name: 'Pollen',
-      severity: 'Low',
-      description: 'Seasonal allergic rhinitis from tree and grass pollen'
-    }
-  ];
+  const { user } = useAuth();
+  const allergies = getPatientAllergies(user?.id || 'P-1001');
 
   const getSeverityColor = (severity: string) => {
     switch (severity) {
       case 'High':
-        return 'border-black bg-gray-100';
+        return 'bg-red-50';
       case 'Medium':
-        return 'border-black bg-gray-50';
+        return 'bg-yellow-50';
       case 'Low':
-        return 'border-black bg-white';
+        return 'bg-green-50';
       default:
-        return 'border-black bg-white';
+        return 'bg-gray-50';
     }
   };
 
@@ -53,13 +35,13 @@ export const PatientAllergies: React.FC = () => {
           
           <div className="space-y-4">
             {allergies.map((allergy, index) => (
-              <div key={index} className={`p-4 border ${getSeverityColor(allergy.severity)}`}>
+              <div key={index} className={`p-4 ${getSeverityColor(allergy.severity)}`}>
                 <div className="flex items-start justify-between mb-2">
                   <div className="flex items-center gap-2">
                     <AlertTriangle size={16} className="text-black" />
                     <h3 className="font-medium text-black">{allergy.name}</h3>
                   </div>
-                  <span className="px-2 py-1 text-xs font-medium border border-black text-black">
+                  <span className="px-2 py-1 text-xs font-medium bg-black text-white">
                     {allergy.severity} Risk
                   </span>
                 </div>
@@ -68,7 +50,7 @@ export const PatientAllergies: React.FC = () => {
             ))}
           </div>
           
-          <div className="mt-6 p-4 border border-black">
+          <div className="mt-6 p-4 bg-gray-50">
             <div className="flex items-center gap-2 mb-2">
               <AlertTriangle size={16} className="text-black" />
               <h3 className="font-medium text-black">Important Notice</h3>

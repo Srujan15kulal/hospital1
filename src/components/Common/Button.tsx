@@ -22,9 +22,9 @@ export const Button: React.FC<ButtonProps> = ({
   const variantClasses = {
     primary: 'bg-black hover:bg-gray-800 text-white border-black focus:ring-gray-500',
     secondary: 'bg-white hover:bg-gray-50 text-black border-black focus:ring-gray-400',
-    outline: 'border border-black bg-white hover:bg-black hover:text-white text-black focus:ring-gray-400',
+    outline: 'bg-white hover:bg-black hover:text-white text-black focus:ring-gray-400',
     danger: 'bg-black hover:bg-gray-800 text-white border-black focus:ring-gray-500',
-    confirm: 'bg-black hover:bg-gray-800 text-white border-black focus:ring-gray-500 transform hover:scale-105 active:scale-95 transition-transform',
+    confirm: 'bg-black hover:bg-gray-800 text-white focus:ring-gray-500 transform hover:scale-105 active:scale-95 transition-transform',
     cancel: 'bg-black hover:bg-gray-800 text-white border-black focus:ring-gray-500'
   };
 

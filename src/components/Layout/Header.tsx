@@ -52,7 +52,7 @@ export const Header: React.FC<HeaderProps> = ({ title, showBackButton = false })
           {showBackButton && (
             <button
               onClick={handleBack}
-              className="p-2 hover:bg-gray-100 transition-colors border border-black"
+              className="p-2 hover:bg-gray-100 transition-colors"
             >
               <ArrowLeft size={20} className="text-black" />
             </button>
@@ -70,13 +70,13 @@ export const Header: React.FC<HeaderProps> = ({ title, showBackButton = false })
         <div className="flex items-center gap-4">
           {user && (
             <div className="flex items-center gap-3">
-              <div className="flex items-center gap-2 px-3 py-2 border border-black">
+              <div className="flex items-center gap-2 px-3 py-2 bg-gray-100">
                 <User size={16} className="text-black" />
                 <span className="text-sm text-black">{user.name}</span>
               </div>
               <button
                 onClick={handleLogout}
-                className="p-2 text-black hover:bg-gray-100 border border-black transition-colors"
+                className="p-2 text-black hover:bg-gray-100 transition-colors"
               >
                 <LogOut size={18} />
               </button>

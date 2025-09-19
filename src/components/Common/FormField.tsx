@@ -23,7 +23,7 @@ export const FormField: React.FC<FormFieldProps> = ({
   required = false,
   className = ''
 }) => {
-  const baseInputClasses = 'w-full px-3 py-2 border border-black focus:outline-none focus:ring-2 focus:ring-gray-500 focus:border-black';
+  const baseInputClasses = 'w-full px-3 py-2 bg-white focus:outline-none focus:ring-2 focus:ring-gray-500';
 
   return (
     <div className={`mb-4 ${className}`}>

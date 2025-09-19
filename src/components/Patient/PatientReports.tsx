@@ -3,45 +3,12 @@ import { Header } from '../Layout/Header';
 import { Card } from '../Common/Card';
 import { Button } from '../Common/Button';
 import { FileText, Calendar, User, Eye } from 'lucide-react';
+import { getPatientReports } from '../../data/patientData';
+import { useAuth } from '../../context/AuthContext';
 
 export const PatientReports: React.FC = () => {
-  const reports = [
-    {
-      name: 'Chest X-Ray',
-      date: '20/08/2025',
-      uploadedBy: 'Lab Technician – Mr. Rao',
-      status: 'Available',
-      imageUrl: 'https://images.pexels.com/photos/4386467/pexels-photo-4386467.jpeg?auto=compress&cs=tinysrgb&w=400&h=300&fit=crop'
-    },
-    {
-      name: 'CBC',
-      date: '01/09/2025',
-      uploadedBy: 'Lab Technician – Ms. Priya',
-      status: 'Available',
-      imageUrl: 'https://images.pexels.com/photos/7089020/pexels-photo-7089020.jpeg?auto=compress&cs=tinysrgb&w=400&h=300&fit=crop'
-    },
-    {
-      name: 'Blood Test Report',
-      date: '14/09/2025',
-      uploadedBy: 'Lab Technician – Mr. Kumar',
-      status: 'Available',
-      imageUrl: 'https://images.pexels.com/photos/4386467/pexels-photo-4386467.jpeg?auto=compress&cs=tinysrgb&w=400&h=300&fit=crop'
-    },
-    {
-      name: 'Ultrasound Report',
-      date: '28/08/2025',
-      uploadedBy: 'Lab Technician – Dr. Singh',
-      status: 'Available',
-      imageUrl: 'https://images.pexels.com/photos/7089020/pexels-photo-7089020.jpeg?auto=compress&cs=tinysrgb&w=400&h=300&fit=crop'
-    },
-    {
-      name: 'MRI Scan Report',
-      date: '20/08/2025',
-      uploadedBy: 'Lab Technician – Ms. Sharma',
-      status: 'Available',
-      imageUrl: 'https://images.pexels.com/photos/4386467/pexels-photo-4386467.jpeg?auto=compress&cs=tinysrgb&w=400&h=300&fit=crop'
-    }
-  ];
+  const { user } = useAuth();
+  const reports = getPatientReports(user?.id || 'P-1001');
 
   return (
     <div className="min-h-screen bg-white">
@@ -56,7 +23,7 @@ export const PatientReports: React.FC = () => {
           
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             {reports.map((report, index) => (
-              <div key={index} className="border border-black overflow-hidden hover:shadow-md transition-shadow">
+              <div key={index} className="bg-gray-50 overflow-hidden hover:shadow-md transition-shadow">
                 <div className="aspect-video bg-gray-100 relative overflow-hidden">
                   <img 
                     src={report.imageUrl} 
@@ -83,7 +50,7 @@ export const PatientReports: React.FC = () => {
                       <span>{report.uploadedBy}</span>
                     </div>
                     <div className="mt-2">
-                      <span className="px-2 py-1 border border-black text-xs text-black">
+                      <span className="px-2 py-1 bg-green-100 text-green-800 text-xs">
                         {report.status}
                       </span>
                     </div>
