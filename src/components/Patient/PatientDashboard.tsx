@@ -1,4 +1,5 @@
 import React from 'react';
+import { useNavigate } from 'react-router-dom';
 import { Header } from '../Layout/Header';
 import { Card } from '../Common/Card';
 import { Button } from '../Common/Button';
@@ -6,6 +7,7 @@ import { User, Calendar, FileText, CreditCard, TestTube, Pill } from 'lucide-rea
 import { mockPatients, mockDoctors } from '../../data/mockData';
 
 export const PatientDashboard: React.FC = () => {
+  const navigate = useNavigate();
   const patient = mockPatients[0]; // Current patient
   const assignedDoctor = mockDoctors[0]; // Assigned doctor
 
@@ -66,11 +68,11 @@ export const PatientDashboard: React.FC = () => {
           {/* Medical History Summary */}
           <Card>
             <div className="flex items-center gap-2 mb-4">
-              <FileText size={20} className="text-blue-600" />
+              <FileText size={20} className="text-gray-700" />
               <h3 className="font-semibold text-gray-900">Medical History</h3>
             </div>
             <p className="text-sm text-gray-700">No major surgeries. Chronic: hypertension.</p>
-            <Button variant="outline" size="sm" className="mt-3">
+            <Button variant="outline" size="sm" className="mt-3" onClick={() => navigate('/patient/history')}>
               View Full History
             </Button>
           </Card>
@@ -104,10 +106,10 @@ export const PatientDashboard: React.FC = () => {
           <Card>
             <div className="flex items-center justify-between mb-6">
               <div className="flex items-center gap-2">
-                <TestTube size={20} className="text-blue-600" />
+                <TestTube size={20} className="text-gray-700" />
                 <h3 className="font-semibold text-gray-900">Test Reports</h3>
               </div>
-              <Button variant="outline" size="sm">View All</Button>
+              <Button variant="outline" size="sm" onClick={() => navigate('/patient/reports')}>View All</Button>
             </div>
             
             <div className="space-y-3">
@@ -116,7 +118,7 @@ export const PatientDashboard: React.FC = () => {
                   <h4 className="font-medium">CBC Test</h4>
                   <p className="text-sm text-gray-600">September 1, 2025</p>
                 </div>
-                <Button size="sm" variant="outline">View</Button>
+                <Button size="sm" variant="outline" onClick={() => navigate('/patient/reports')}>View</Button>
               </div>
             </div>
           </Card>
@@ -124,10 +126,10 @@ export const PatientDashboard: React.FC = () => {
           <Card>
             <div className="flex items-center justify-between mb-6">
               <div className="flex items-center gap-2">
-                <Pill size={20} className="text-blue-600" />
+                <Pill size={20} className="text-gray-700" />
                 <h3 className="font-semibold text-gray-900">Recent Prescriptions</h3>
               </div>
-              <Button variant="outline" size="sm">View All</Button>
+              <Button variant="outline" size="sm" onClick={() => navigate('/patient/history')}>View All</Button>
             </div>
             
             <div className="space-y-3">
@@ -140,11 +142,34 @@ export const PatientDashboard: React.FC = () => {
           </Card>
         </div>
 
+        {/* Allergies Section */}
+        <Card className="mt-6">
+          <div className="flex items-center justify-between mb-6">
+            <div className="flex items-center gap-2">
+              <AlertTriangle size={20} className="text-red-600" />
+              <h3 className="text-lg font-semibold text-gray-900">Allergies & Reactions</h3>
+            </div>
+            <Button variant="outline" size="sm" onClick={() => navigate('/patient/allergies')}>View All</Button>
+          </div>
+          
+          <div className="flex flex-wrap gap-2">
+            <span className="px-3 py-1 bg-red-50 text-red-800 text-sm rounded-full border border-red-200">
+              Penicillin
+            </span>
+            <span className="px-3 py-1 bg-red-50 text-red-800 text-sm rounded-full border border-red-200">
+              Peanuts
+            </span>
+            <span className="px-3 py-1 bg-yellow-50 text-yellow-800 text-sm rounded-full border border-yellow-200">
+              Pollen
+            </span>
+          </div>
+        </Card>
+
         {/* Billing Summary */}
         <Card className="mt-6">
           <div className="flex items-center justify-between mb-6">
             <div className="flex items-center gap-2">
-              <CreditCard size={20} className="text-blue-600" />
+              <CreditCard size={20} className="text-gray-700" />
               <h3 className="text-lg font-semibold text-gray-900">Billing Summary</h3>
             </div>
             <Button variant="outline" size="sm">View All Bills</Button>

@@ -14,6 +14,10 @@ export const DoctorDashboard: React.FC = () => {
     navigate(`/doctor/patient/${patientId}`);
   };
 
+  const handleProfileClick = () => {
+    navigate('/doctor/profile');
+  };
+
   return (
     <div className="min-h-screen bg-gray-50">
       <Header title="Doctor Dashboard" />
@@ -23,7 +27,7 @@ export const DoctorDashboard: React.FC = () => {
           {/* Doctor Profile */}
           <Card>
             <div className="flex items-center gap-2 mb-4">
-              <User size={20} className="text-blue-600" />
+              <User size={20} className="text-gray-700" />
               <h3 className="font-semibold text-gray-900">Doctor Profile</h3>
             </div>
             <div className="text-center">
@@ -34,15 +38,18 @@ export const DoctorDashboard: React.FC = () => {
               />
               <h4 className="font-medium text-gray-900 mb-1">{doctor.name}</h4>
               <p className="text-sm text-gray-600 mb-2">{doctor.qualification}</p>
-              <p className="text-sm font-medium text-blue-600 mb-2">{doctor.department}</p>
+              <p className="text-sm font-medium text-gray-700 mb-2">{doctor.department}</p>
               <p className="text-sm text-gray-500">{doctor.contact_number}</p>
+              <Button variant="outline" size="sm" className="mt-3" onClick={handleProfileClick}>
+                View Profile
+              </Button>
             </div>
           </Card>
 
           {/* Appointments */}
           <Card>
             <div className="flex items-center gap-2 mb-4">
-              <Calendar size={20} className="text-blue-600" />
+              <Calendar size={20} className="text-gray-700" />
               <h3 className="font-semibold text-gray-900">Appointments</h3>
             </div>
             <div className="space-y-2">
@@ -64,7 +71,7 @@ export const DoctorDashboard: React.FC = () => {
           {/* Schedule */}
           <Card>
             <div className="flex items-center gap-2 mb-4">
-              <Clock size={20} className="text-blue-600" />
+              <Clock size={20} className="text-gray-700" />
               <h3 className="font-semibold text-gray-900">Schedule</h3>
             </div>
             <div className="space-y-3">
@@ -86,7 +93,7 @@ export const DoctorDashboard: React.FC = () => {
           {/* Patient Information */}
           <Card>
             <div className="flex items-center gap-2 mb-4">
-              <Users size={20} className="text-blue-600" />
+            <Users size={20} className="text-gray-700" />
               <h3 className="font-semibold text-gray-900">Patient Info</h3>
             </div>
             <div className="space-y-3">
@@ -110,7 +117,7 @@ export const DoctorDashboard: React.FC = () => {
         <Card className="mt-6">
           <div className="flex items-center justify-between mb-6">
             <div className="flex items-center gap-2">
-              <Clock size={20} className="text-blue-600" />
+              <Clock size={20} className="text-gray-700" />
               <h3 className="text-lg font-semibold text-gray-900">Today's Appointments</h3>
             </div>
             <Button variant="outline" size="sm">View All</Button>
@@ -124,8 +131,8 @@ export const DoctorDashboard: React.FC = () => {
                 onClick={() => handlePatientClick(appointment.patient_id)}
               >
                 <div className="flex items-center gap-4">
-                  <div className="w-10 h-10 bg-blue-100 rounded-full flex items-center justify-center">
-                    <User size={20} className="text-blue-600" />
+                  <div className="w-10 h-10 bg-gray-100 rounded-full flex items-center justify-center">
+                    <User size={20} className="text-gray-700" />
                   </div>
                   <div>
                     <h4 className="font-medium text-gray-900">{appointment.patient_name}</h4>

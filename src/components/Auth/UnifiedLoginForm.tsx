@@ -66,13 +66,13 @@ export const UnifiedLoginForm: React.FC = () => {
   };
 
   return (
-    <div className="min-h-screen bg-gray-50 flex items-center justify-center p-4">
+    <div className="min-h-screen bg-white flex items-center justify-center p-4">
       <Card className="w-full max-w-md">
         <div className="text-center mb-8">
-          <div className="w-16 h-16 bg-blue-50 rounded-full flex items-center justify-center mx-auto mb-4">
-            <Building2 size={32} className="text-blue-600" />
+          <div className="w-16 h-16 bg-gray-100 rounded-full flex items-center justify-center mx-auto mb-4">
+            <Building2 size={32} className="text-gray-700" />
           </div>
-          <h1 className="text-2xl font-semibold text-gray-900 mb-2">Health Portal</h1>
+          <h1 className="text-2xl font-medium text-gray-900 mb-2">Health Portal</h1>
           <p className="text-gray-600">Hospital Management System</p>
         </div>
 

@@ -83,6 +83,15 @@ export const PatientDetail: React.FC = () => {
                 </span>
               </div>
             ))}
+            
+            <div className="flex gap-2 mt-4">
+              <Button variant="confirm" fullWidth size="sm">
+                Confirm Treatment
+              </Button>
+              <Button variant="cancel" fullWidth size="sm">
+                Cancel
+              </Button>
+            </div>
           </div>
         );
       case 'allergies':

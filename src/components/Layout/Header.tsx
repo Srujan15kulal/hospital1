@@ -46,19 +46,19 @@ export const Header: React.FC<HeaderProps> = ({ title, showBackButton = false })
   };
 
   return (
-    <header className="bg-white border-b border-gray-200 px-4 py-4">
+    <header className="bg-white border-b border-gray-100 px-4 py-4">
       <div className="flex items-center justify-between max-w-6xl mx-auto">
         <div className="flex items-center gap-4">
           {showBackButton && (
             <button
               onClick={handleBack}
-              className="p-2 hover:bg-gray-100 rounded-lg transition-colors"
+              className="p-2 hover:bg-gray-50 rounded-lg transition-colors"
             >
-              <ArrowLeft size={20} className="text-gray-600" />
+              <ArrowLeft size={20} className="text-gray-700" />
             </button>
           )}
           <div>
-            <h1 className="text-xl font-semibold text-gray-900">{title}</h1>
+            <h1 className="text-xl font-medium text-gray-900">{title}</h1>
             {user && (
               <p className="text-sm text-gray-500">
                 {getRoleDisplayName(user.role)} Portal
@@ -70,13 +70,13 @@ export const Header: React.FC<HeaderProps> = ({ title, showBackButton = false })
         <div className="flex items-center gap-4">
           {user && (
             <div className="flex items-center gap-3">
-              <div className="flex items-center gap-2 px-3 py-2 bg-gray-50 rounded-lg">
+              <div className="flex items-center gap-2 px-3 py-2 bg-gray-50 rounded-full">
                 <User size={16} className="text-gray-600" />
-                <span className="text-sm font-medium text-gray-700">{user.name}</span>
+                <span className="text-sm text-gray-700">{user.name}</span>
               </div>
               <button
                 onClick={handleLogout}
-                className="p-2 text-gray-600 hover:text-red-600 hover:bg-red-50 rounded-lg transition-colors"
+                className="p-2 text-gray-500 hover:text-red-600 hover:bg-red-50 rounded-lg transition-colors"
               >
                 <LogOut size={18} />
               </button>

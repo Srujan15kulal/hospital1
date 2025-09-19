@@ -5,8 +5,12 @@ import { AuthProvider, useAuth } from './context/AuthContext';
 // Components
 import { UnifiedLoginForm } from './components/Auth/UnifiedLoginForm';
 import { DoctorDashboard } from './components/Doctor/DoctorDashboard';
+import { DoctorProfile } from './components/Doctor/DoctorProfile';
 import { PatientDetail } from './components/Doctor/PatientDetail';
 import { PatientDashboard } from './components/Patient/PatientDashboard';
+import { PatientHistory } from './components/Patient/PatientHistory';
+import { PatientReports } from './components/Patient/PatientReports';
+import { PatientAllergies } from './components/Patient/PatientAllergies';
 import { HospitalDashboard } from './components/Hospital/HospitalDashboard';
 import { PatientRegistration } from './components/Hospital/PatientRegistration';
 import { PharmacyDashboard } from './components/Pharmacy/PharmacyDashboard';
@@ -47,6 +51,14 @@ const AppRoutes: React.FC = () => {
         } 
       />
       <Route 
+        path="/doctor/profile" 
+        element={
+          <ProtectedRoute allowedRoles={['doctor']}>
+            <DoctorProfile />
+          </ProtectedRoute>
+        } 
+      />
+      <Route 
         path="/doctor/patient/:patientId" 
         element={
           <ProtectedRoute allowedRoles={['doctor']}>
@@ -61,6 +73,30 @@ const AppRoutes: React.FC = () => {
         element={
           <ProtectedRoute allowedRoles={['patient']}>
             <PatientDashboard />
+          </ProtectedRoute>
+        } 
+      />
+      <Route 
+        path="/patient/history" 
+        element={
+          <ProtectedRoute allowedRoles={['patient']}>
+            <PatientHistory />
+          </ProtectedRoute>
+        } 
+      />
+      <Route 
+        path="/patient/reports" 
+        element={
+          <ProtectedRoute allowedRoles={['patient']}>
+            <PatientReports />
+          </ProtectedRoute>
+        } 
+      />
+      <Route 
+        path="/patient/allergies" 
+        element={
+          <ProtectedRoute allowedRoles={['patient']}>
+            <PatientAllergies />
           </ProtectedRoute>
         } 
       />
