@@ -15,7 +15,6 @@ export const DoctorDashboard: React.FC = () => {
   const [activeTab, setActiveTab] = useState('overview');
   const [showActionModal, setShowActionModal] = useState<string | null>(null);
   const [selectedTests, setSelectedTests] = useState<string[]>([]);
-  const [requestedTests, setRequestedTests] = useState<{patientId: string, tests: string[], timestamp: string}[]>([]);
 
   const filteredPatients = mockPatients.filter(patient => 
     patient.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
@@ -26,6 +25,13 @@ export const DoctorDashboard: React.FC = () => {
     setSelectedPatient(patient);
     setActiveTab('overview');
     setSearchTerm('');
+  };
+
+  const handleAppointmentClick = (appointment: any) => {
+    const patient = mockPatients.find(p => p.patient_id === appointment.patient_id);
+    if (patient) {
+      handlePatientSelect(patient);
+    }
   };
 
   const tabs = [
@@ -106,13 +112,13 @@ export const DoctorDashboard: React.FC = () => {
         return (
           <div className="space-y-3">
             {reports.map((report, index) => (
-              <div key={index} className="flex justify-between items-center p-3 bg-gray-50">
+              <div key={index} className="flex justify-between items-center p-4 bg-gray-50">
                 <div>
-                  <h4 className="font-medium">{report.name}</h4>
+                  <h4 className="font-medium text-gray-900">{report.name}</h4>
                   <p className="text-sm text-gray-600">{report.date}</p>
                   <p className="text-sm text-gray-500">Uploaded by {report.uploadedBy}</p>
                 </div>
-                <div className="flex gap-2">
+                <div className="flex items-center gap-3">
                   <span className="px-3 py-1 bg-green-100 text-green-800 text-sm">
                     {report.status}
                   </span>
@@ -158,12 +164,6 @@ export const DoctorDashboard: React.FC = () => {
 
     const handleConfirmTests = () => {
       if (selectedTests.length > 0 && selectedPatient) {
-        const newRequest = {
-          patientId: selectedPatient.patient_id,
-          tests: [...selectedTests],
-          timestamp: new Date().toLocaleString()
-        };
-        setRequestedTests(prev => [...prev, newRequest]);
         alert(`Successfully requested ${selectedTests.join(', ')} for ${selectedPatient.name}`);
         setSelectedTests([]);
         setShowActionModal(null);
@@ -174,6 +174,7 @@ export const DoctorDashboard: React.FC = () => {
       setSelectedTests([]);
       setShowActionModal(null);
     };
+
     return (
       <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center p-4 z-50">
         <Card className="w-full max-w-md">
@@ -185,10 +186,10 @@ export const DoctorDashboard: React.FC = () => {
                 <button
                   key={option}
                   onClick={() => handleTestSelection(option)}
-                  className={`w-full px-4 py-2 text-left border transition-colors ${
+                  className={`w-full px-4 py-2 text-left transition-colors ${
                     selectedTests.includes(option)
-                      ? 'bg-black text-white border-black'
-                      : 'bg-white text-black border-black hover:bg-gray-50'
+                      ? 'bg-black text-white'
+                      : 'bg-white text-black hover:bg-gray-50'
                   }`}
                 >
                   <div className="flex items-center justify-between">
@@ -201,7 +202,7 @@ export const DoctorDashboard: React.FC = () => {
               ))}
               
               {selectedTests.length > 0 && (
-                <div className="mt-4 p-3 bg-gray-50 border">
+                <div className="mt-4 p-3 bg-gray-50">
                   <p className="text-sm font-medium text-gray-700 mb-2">
                     Selected Tests ({selectedTests.length}):
                   </p>
@@ -304,23 +305,23 @@ export const DoctorDashboard: React.FC = () => {
             </div>
           </Card>
 
-          {/* Appointments */}
+          {/* Patient Information */}
           <Card>
             <div className="flex items-center gap-2 mb-4"> 
               <Calendar size={20} className="text-black" />
-              <h3 className="font-semibold text-black">Appointments</h3>
+              <h3 className="font-semibold text-black">Patient Information</h3>
             </div>
             <div className="space-y-2">
               <div className="flex justify-between text-sm">
-                <span>Total Appointments</span>
-                <span className="font-medium">{mockAppointments.length}</span>
+                <span>Total Patients</span>
+                <span className="font-medium">{mockPatients.length}</span>
               </div>
               <div className="flex justify-between text-sm">
-                <span>Completed</span>
+                <span>Active Cases</span>
                 <span className="font-medium">8</span>
               </div>
               <div className="flex justify-between text-sm">
-                <span>Pending</span>
+                <span>Follow-ups</span>
                 <span className="font-medium">4</span>
               </div>
             </div>
@@ -437,10 +438,7 @@ export const DoctorDashboard: React.FC = () => {
               <div
                 key={appointment.appointment_id}
                 className="flex items-center justify-between p-4 bg-gray-50 hover:bg-gray-100 cursor-pointer transition-colors"
-                onClick={() => {
-                  const patient = mockPatients.find(p => p.patient_id === appointment.patient_id);
-                  if (patient) handlePatientSelect(patient);
-                }}
+                onClick={() => handleAppointmentClick(appointment)}
               >
                 <div className="flex items-center gap-4">
                   <div className="w-10 h-10 bg-gray-200 flex items-center justify-center">
