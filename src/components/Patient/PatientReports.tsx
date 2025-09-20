@@ -47,7 +47,7 @@ export const PatientReports: React.FC = () => {
                     </div>
                     <div className="flex items-center gap-1">
                       <User size={14} />
-                      <span>{report.uploadedBy}</span>
+                      <span>Requested by {report.requestedBy}</span>
                     </div>
                     <div className="mt-2">
                       <span className="px-2 py-1 bg-green-100 text-green-800 text-xs">

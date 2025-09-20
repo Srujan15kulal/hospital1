@@ -7,6 +7,7 @@ import { UnifiedLoginForm } from './components/Auth/UnifiedLoginForm';
 import { DoctorDashboard } from './components/Doctor/DoctorDashboard';
 import { DoctorProfile } from './components/Doctor/DoctorProfile';
 import { PatientDetail } from './components/Doctor/PatientDetail';
+import { ReportImagePage } from './components/Doctor/ReportImagePage';
 import { PatientDashboard } from './components/Patient/PatientDashboard';
 import { PatientHistory } from './components/Patient/PatientHistory';
 import { PatientReports } from './components/Patient/PatientReports';
@@ -70,6 +71,14 @@ const AppRoutes: React.FC = () => {
         element={
           <ProtectedRoute allowedRoles={['doctor']}>
             <PatientDetail />
+          </ProtectedRoute>
+        } 
+      />
+      <Route 
+        path="/doctor/patient/:patientId/report/:reportName" 
+        element={
+          <ProtectedRoute allowedRoles={['doctor']}>
+            <ReportImagePage />
           </ProtectedRoute>
         } 
       />

@@ -30,8 +30,12 @@ export const DoctorDashboard: React.FC = () => {
   const handleAppointmentClick = (appointment: any) => {
     const patient = mockPatients.find(p => p.patient_id === appointment.patient_id);
     if (patient) {
-      handlePatientSelect(patient);
+      navigate(`/doctor/patient/${patient.patient_id}`);
     }
+  };
+
+  const handleReportView = (reportName: string, patientId: string) => {
+    navigate(`/doctor/patient/${patientId}/report/${reportName.toLowerCase().replace(/\s+/g, '-')}`);
   };
 
   const tabs = [
@@ -89,7 +93,11 @@ export const DoctorDashboard: React.FC = () => {
           <div className="space-y-4">
             <div>
               <h4 className="font-medium text-gray-900 mb-2">Medical History</h4>
-              <p className="text-gray-700 mb-4">{history.medicalHistory}</p>
+              <div className="space-y-2 text-sm text-gray-700">
+                <p><strong>Past Conditions:</strong> {history.pastConditions}</p>
+                <p><strong>Surgeries:</strong> {history.surgeries}</p>
+                <p><strong>Family History:</strong> {history.familyHistory}</p>
+              </div>
             </div>
             <div>
               <h4 className="font-medium text-gray-900 mb-3">Recent Prescriptions</h4>
@@ -116,13 +124,19 @@ export const DoctorDashboard: React.FC = () => {
                 <div>
                   <h4 className="font-medium text-gray-900">{report.name}</h4>
                   <p className="text-sm text-gray-600">{report.date}</p>
-                  <p className="text-sm text-gray-500">Uploaded by {report.uploadedBy}</p>
+                  <p className="text-sm text-gray-500">Requested by {report.requestedBy}</p>
                 </div>
                 <div className="flex items-center gap-3">
                   <span className="px-3 py-1 bg-green-100 text-green-800 text-sm">
                     {report.status}
                   </span>
-                  <Button size="sm" variant="outline">View</Button>
+                  <Button 
+                    size="sm" 
+                    variant="outline"
+                    onClick={() => handleReportView(report.name, selectedPatient.patient_id)}
+                  >
+                    View
+                  </Button>
                 </div>
               </div>
             ))}
@@ -217,8 +231,9 @@ export const DoctorDashboard: React.FC = () => {
                   fullWidth 
                   onClick={handleConfirmTests}
                   disabled={selectedTests.length === 0}
+                  className="bg-black text-white hover:bg-gray-800 transform hover:scale-105 active:scale-95 transition-transform"
                 >
-                  Confirm Request ({selectedTests.length})
+                  Confirm ({selectedTests.length})
                 </Button>
               </div>
             </div>
@@ -229,14 +244,19 @@ export const DoctorDashboard: React.FC = () => {
                 placeholder="Add notes..."
                 rows={4}
               />
-              <Button fullWidth>Submit</Button>
+              <Button 
+                fullWidth
+                className="bg-black text-white hover:bg-gray-800 transform hover:scale-105 active:scale-95 transition-transform"
+              >
+                Confirm
+              </Button>
             </div>
           )}
           
           <Button 
             variant="outline" 
             fullWidth 
-            className="mt-3"
+            className="mt-3 bg-black text-white hover:bg-gray-800"
             onClick={handleCloseModal}
           >
             Cancel

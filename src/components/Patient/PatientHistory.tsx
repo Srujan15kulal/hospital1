@@ -22,7 +22,11 @@ export const PatientHistory: React.FC = () => {
           
           <div className="mb-6 p-4 bg-gray-50">
             <h3 className="font-medium text-gray-900 mb-2">Medical History</h3>
-            <p className="text-gray-700">{history.medicalHistory}</p>
+            <div className="space-y-1 text-gray-700">
+              <p><strong>Past Conditions:</strong> {history.pastConditions}</p>
+              <p><strong>Surgeries:</strong> {history.surgeries}</p>
+              <p><strong>Family History:</strong> {history.familyHistory}</p>
+            </div>
           </div>
           
           <div className="space-y-3">

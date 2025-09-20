@@ -2,7 +2,9 @@
 
 export const getPatientHistory = (patientId: string) => {
   return {
-    medicalHistory: "Past conditions: hypertension (2019). No surgeries. Family history: diabetes.",
+    pastConditions: "Hypertension (2019)",
+    surgeries: "None",
+    familyHistory: "Diabetes",
     prescriptions: [
       {
         medicine: 'Paracetamol 500mg',
@@ -43,21 +45,21 @@ export const getPatientReports = (patientId: string) => {
     {
       name: 'Chest X-Ray', 
       date: '20/08/2025',
-      uploadedBy: 'Lab Technician – Mr. Rao',
+      requestedBy: 'Dr. Singh',
       status: 'Available',
       imageUrl: 'https://images.pexels.com/photos/4386467/pexels-photo-4386467.jpeg?auto=compress&cs=tinysrgb&w=400&h=300&fit=crop'
     },
     {
       name: 'CBC Report',
       date: '01/09/2025',
-      uploadedBy: 'Lab Technician – Ms. Priya',
+      requestedBy: 'Dr. Verma',
       status: 'Available',
       imageUrl: 'https://images.pexels.com/photos/7089020/pexels-photo-7089020.jpeg?auto=compress&cs=tinysrgb&w=400&h=300&fit=crop'
     },
     {
       name: 'Blood Test Report',
       date: '14/09/2025',
-      uploadedBy: 'Lab Technician – Mr. Kumar',
+      requestedBy: 'Dr. Kumar',
       status: 'Available',
       imageUrl: 'https://images.pexels.com/photos/4386467/pexels-photo-4386467.jpeg?auto=compress&cs=tinysrgb&w=400&h=300&fit=crop'
     }
